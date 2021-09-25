@@ -1,4 +1,4 @@
-import dotenv
+# import dotenv
 import pydot
 import requests
 import numpy as np
@@ -38,7 +38,7 @@ NB_AUDIO_SAMPLES = 1321967
 SAMPLING_RATE = 44100
 
 # Load the environment from the .env file.
-dotenv.load_dotenv(dotenv.find_dotenv())
+# dotenv.load_dotenv(dotenv.find_dotenv())
 
 
 class FreeMusicArchive:
@@ -96,7 +96,7 @@ class FreeMusicArchive:
     def get_all(self, dataset, id_range):
         index = dataset + '_id'
 
-        id_ = 2 if dataset is 'track' else 1
+        id_ = 2 if dataset == 'track' else 1
         row = self._get_data(dataset, id_)
         df = pd.DataFrame(columns=row.keys())
         df.set_index(index, inplace=True)
@@ -230,8 +230,7 @@ def load(filepath):
             tracks[column] = pd.to_datetime(tracks[column])
 
         SUBSETS = ('small', 'medium', 'large')
-        tracks['set', 'subset'] = tracks['set', 'subset'].astype(
-                'category', categories=SUBSETS, ordered=True)
+        tracks['set', 'subset'] = tracks['set', 'subset'].astype('category')
 
         COLUMNS = [('track', 'genre_top'), ('track', 'license'),
                    ('album', 'type'), ('album', 'information'),
